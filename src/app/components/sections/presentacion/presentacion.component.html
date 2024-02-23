@@ -1,0 +1,20 @@
+<div class="presentacion-container">
+
+  <div class="tajeta d-flex flex-column flex-lg-row justify-content-evenly">
+
+
+    <img src="../../../../assets/img/Presentacion.png" class="imagen" alt="Dra. Diaz Foto">
+
+
+    <div class="cuerpo d-flex flex-column justify-content-evenly  m-5">
+      <p class="card-title text-center fw-bold fs-3">{{Presentacion.titulo}}</p>
+      <p class="card-text  fst-italic fs-5 mt-3">{{texto}}</p>
+      <div class="botones d-flex justify-content-between my-3 ">
+        <button type="button" class="btn btn-primary fw-bold" (click)="anterior()"><</button>
+            <button type="button" class="btn btn-primary fw-bold" (click)="siguiente()">></button>
+      </div>
+    </div>
+
+  </div>
+
+</div>

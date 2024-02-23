@@ -1,0 +1,72 @@
+<div class="mail d-flex flex-column p-3 ">
+  <p class="text-center fw-bold fs-2">Dejame tu consulta</p>
+  <p class="text-center w-100 align-self-center my-3">{{contactoText.CONSULTA_TEXT}}</p>
+
+  <form class="w-100" [formGroup]="formMail" (ngSubmit)="sendEmail()">
+    <div class=" d-flex justify-content-between ">
+      <!-- Nombre -->
+      <div class="mb-2 w-50">
+        <label class="form-label">Nombre</label>
+        <input [ngClass]="{'is-invalid': hasErrors('nombre', 'required') || hasErrors('nombre', 'minlength')}"
+        type="text"
+        class="form-control"
+        name="Nombre"
+        placeholder="Nombre"
+        formControlName="nombre">
+        <div class="text-danger" *ngIf="hasErrors('nombre', 'required')">Campo obligatorio.</div>
+        <div class="text-danger" *ngIf="hasErrors('nombre', 'minlength')">Requiero minimo 3 caracteres.</div>
+      </div>
+      <!-- Telefono -->
+      <div class="mb-2 ps-3 w-50">
+        <label class="form-label">Telefono</label>
+        <input [ngClass]="{'is-invalid': hasErrors('telefono', 'required') || hasErrors('telefono', 'pattern')}"
+        type="text"
+        class="form-control"
+        name="Telefono"
+        placeholder="Telefono"
+        formControlName="telefono">
+        <div class="text-danger" *ngIf="hasErrors('telefono', 'required')">Campo obligatorio.</div>
+        <div class="text-danger" *ngIf="hasErrors('telefono', 'pattern')">El Teléfono ingresado no es válido. Debe tener el formato "(Código de área)-(Número)"</div>
+        <div class="text-danger" *ngIf="hasErrors('telefono', 'pattern')">Ej: 381-1234567</div>
+      </div>
+    </div>
+    <!-- Email -->
+    <div class="mb-2">
+      <label class="form-label">Email</label>
+      <input [ngClass]="{'is-invalid': hasErrors('email', 'required') || hasErrors('email', 'email')}"
+      type="email"
+      class="form-control"
+      name="Email"
+      placeholder="Email"
+      formControlName="email">
+      <div class="text-danger" *ngIf="hasErrors('email', 'email')">Mail invalido.</div>
+      <div class="text-danger" *ngIf="hasErrors('email', 'required')">Campo obligatorio.</div>
+    </div>
+    <!-- Mensaje  -->
+    <div class="mb-2">
+      <label class="form-label">Mensaje</label>
+      <textarea [ngClass]="{'is-invalid': hasErrors('mensaje', 'required') || hasErrors('mensaje', 'minlength')}"
+      class="form-control"
+      name="Mensaje"
+      rows="3"
+      placeholder="Mensaje"
+      formControlName="mensaje"></textarea>
+      <div class="text-danger" *ngIf="hasErrors('mensaje', 'required')">Campo obligatorio.</div>
+      <div class="text-danger" *ngIf="hasErrors('mensaje', 'minlength')">Requiero minimo 3 caracteres.</div>
+    </div>
+    <!-- FormSumit Options -->
+    <input type="hidden" name="_next" value="http://192.168.1.18:4200/Contacto/MailSuccess">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    <!-- FormSumit Options -->
+    <div class="d-flex justify-content-center mt-3">
+      <button *ngIf="!loading" class="btn btn-primary" type="submit" [disabled]="formMail.invalid">{{contactoText.BTN_TEXT}}</button>
+      <button *ngIf="loading" class="btn btn-primary" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+        <span role="status"> Cargando...</span>
+      </button>
+    </div>
+
+  </form>
+
+</div>

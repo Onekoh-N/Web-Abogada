@@ -1,0 +1,9 @@
+.contenido {
+  display: block;
+  height: 100%; /* Ocupa toda la altura del contenedor */
+  width: 100%; /* Ocupa toda la anchura del contenedor */
+  padding: 0 0.5% 0 0.5%; /* Espacio interno del contenido */
+  overflow: auto;
+}
+
+
